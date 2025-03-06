@@ -25,42 +25,49 @@ define view entity ZI_CONNECTION_MANJU
       targetElement: '_Flight'
        }
       ]
-      @UI.lineItem: [{ position: 10 , label: 'Carrier ID'}]
-      @UI.selectionField: [{ position: 10 }]
+      @EndUserText.label: 'Carrier ID'
+      @UI.lineItem: [{ position: 10 }]
+      @UI.selectionField: [{ position: 10  }]
       @UI.identification: [{ position: 10 }]
       @ObjectModel.text.association: '_Airline'
       @Search.defaultSearchElement: true
-       @Consumption.valueHelpDefinition: [{ entity:{ name:'ZI_CARRIER_MANJ_VH', element:'CarrierId'  } }]
+      @Consumption.valueHelpDefinition: [{ entity:{ name:'ZI_CARRIER_MANJ_VH', element:'CarrierId'  } }]
   key carrier_id      as CarrierId,
-      @UI.lineItem: [{ position: 20 , label: 'Connection ID'}]
+      @EndUserText.label: 'Connection ID'
+      @UI.lineItem: [{ position: 20 }]
       @UI.selectionField: [{ position: 20 }]
-      @UI.identification: [{ position: 20,label: 'Connection' }]
+      @UI.identification: [{ position: 20 }]
       @Search.defaultSearchElement: true
       @ObjectModel.text.association: '_Flight'
   key connection_id   as ConnectionId,
-      @UI.lineItem: [{ position: 30 ,label: 'Starting Point' }]
+   @EndUserText.label: 'Starting Point'
+      @UI.lineItem: [{ position: 30 }]
       @UI.selectionField: [{ position: 30 }]
       @UI.identification: [{ position: 30 }]
       @Search.defaultSearchElement: true
       @Consumption.valueHelpDefinition: [{ entity:{ name:'ZI_AIRPORTS_MANJU_VH', element:'AirportId'  } }]
       airport_from_id as AirportFromId,
-      @UI.lineItem: [{ position: 40 ,label: 'End Point'  }]
+       @EndUserText.label: 'End Point'
+      @UI.lineItem: [{ position: 40  }]
       @UI.selectionField: [{ position: 40 }]
       @UI.identification: [{ position: 40 }]
       @Search.defaultSearchElement: true
-       @Consumption.valueHelpDefinition: [{ entity:{ name:'ZI_AIRPORTS_MANJU_VH', element:'AirportId'  } }]
+      @Consumption.valueHelpDefinition: [{ entity:{ name:'ZI_AIRPORTS_MANJU_VH', element:'AirportId'  } }]
       airport_to_id   as AirportToId,
-      @UI.lineItem: [{ position: 50 ,label: 'Starting Time' }]
+        @EndUserText.label: 'Starting Time'
+      @UI.lineItem: [{ position: 50  }]
       @UI.identification: [{ position: 50 }]
       @Search.defaultSearchElement: true
       departure_time  as DepartureTime,
-      @UI.lineItem: [{ position: 60 ,label: 'End Time' }]
-      @UI.identification: [{ position: 60 }]
+       @EndUserText.label: 'End Time'
+      @UI.lineItem: [{ position: 60  }]
+      @UI.identification: [{ position: 60  }]
       @Search.defaultSearchElement: true
       arrival_time    as ArrivalTime,
-      @UI.lineItem: [{ position: 70 , label: 'Distance'}]
+       @EndUserText.label: 'Distance'
+      @UI.lineItem: [{ position: 70 }]
       @Semantics.quantity.unitOfMeasure: 'DistanceUnit'
-      @UI.identification: [{ position: 70 }]
+      @UI.identification: [{ position: 70  }]
       @Search.defaultSearchElement: true
       distance        as Distance,
       distance_unit   as DistanceUnit,
