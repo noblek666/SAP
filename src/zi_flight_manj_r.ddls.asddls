@@ -7,13 +7,16 @@
     sizeCategory: #S,
     dataClass: #MIXED
 }
+@Search.searchable: true
 define view entity ZI_FLIGHT_MANJ_R
   as select from /dmo/flight
   association [1..1] to ZI_CARRIER_MANJ_R as _Airline on $projection.CarrierId = _Airline.CarrierId
 {
 
       @UI.lineItem: [{ position: 10 }]
-       @ObjectModel.text.association: '_Airline'
+      @ObjectModel.text.association: '_Airline'
+      @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
   key carrier_id     as CarrierId,
       @UI.lineItem: [{ position: 20 }]
   key connection_id  as ConnectionId,
@@ -25,6 +28,9 @@ define view entity ZI_FLIGHT_MANJ_R
       @UI.lineItem: [{ position: 50 }]
       currency_code  as CurrencyCode,
       @UI.lineItem: [{ position: 60 }]
+
+      @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
       plane_type_id  as PlaneTypeId,
       @UI.lineItem: [{ position: 70 }]
       seats_max      as SeatsMax,

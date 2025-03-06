@@ -2,4 +2,5 @@
 define service ZFLIGHT_CONNECTION_MANJU {
   expose ZI_CONNECTION_MANJU;
   expose ZI_FLIGHT_MANJ_R;
+  expose ZI_CARRIER_MANJ_R;
 }
