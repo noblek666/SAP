@@ -7,10 +7,13 @@
     sizeCategory: #S,
     dataClass: #MIXED
 }
-define view entity ZI_TRAVEL_MANJU_M
+define root view entity ZI_TRAVEL_MANJU_M
   as select from ztravel_manju_m
+  composition[0..1] of ZI_BOOKING_MANJU_M as _Booking
   association [0..1] to /DMO/I_Agency as _Agency on $projection.AgencyId = _Agency.AgencyID
   association [0..1] to /DMO/I_Customer as _Customer on $projection.CustomerId = _Customer.CustomerID
+  association [1..1] to I_Currency as _Currency on $projection.CurrencyCode = _Currency.Currency
+  association [1..1] to /DMO/I_Overall_Status_VH as _Status on $projection.OverallStatus = _Status.OverallStatus
   
 {
   key travel_id       as TravelId,
@@ -30,5 +33,8 @@ define view entity ZI_TRAVEL_MANJU_M
       last_changed_by as LastChangedBy,
       last_changed_at as LastChangedAt,
       _Agency, // Association
-      _Customer // Association
+      _Customer, // Association
+      _Currency,  // Association
+      _Status,
+      _Booking // Association
 }
