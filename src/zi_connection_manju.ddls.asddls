@@ -13,13 +13,21 @@ typeNamePlural: 'Connections'
  }
 define view entity ZI_CONNECTION_MANJU
   as select from /dmo/connection as Connection
+  association [1..*] to ZI_FLIGHT_MANJ_R as _Flight on  $projection.CarrierId    = _Flight.CarrierId
+                                                    and $projection.ConnectionId = _Flight.ConnectionId
+association [1..1] to ZI_CARRIER_MANJ_R as _Airline on $projection.CarrierId = _Airline.CarrierId
 
 {
 
-      @UI.facet: [{ purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, position: 10, label: 'Connection Details'  }]
+      @UI.facet: [{ id:'Connection', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, position: 10, label: 'Connection Details'  },
+      { id:'Flight', purpose: #STANDARD, type: #LINEITEM_REFERENCE, position: 20, label: 'Flight Details',
+     targetElement: '_Flight' 
+       }
+      ]
       @UI.lineItem: [{ position: 10 , label: 'Carrier ID'}]
       @UI.selectionField: [{ position: 10 }]
       @UI.identification: [{ position: 10 }]
+      @ObjectModel.text.association: '_Airline'
   key carrier_id      as CarrierId,
       @UI.lineItem: [{ position: 20 , label: 'Connection ID'}]
       @UI.selectionField: [{ position: 20 }]
@@ -43,5 +51,7 @@ define view entity ZI_CONNECTION_MANJU
       @Semantics.quantity.unitOfMeasure: 'DistanceUnit'
       @UI.identification: [{ position: 70 }]
       distance        as Distance,
-      distance_unit   as DistanceUnit
+      distance_unit   as DistanceUnit,
+      _Flight, // Association
+       _Airline // Association
 }

@@ -1,4 +1,5 @@
 @EndUserText.label: 'Flight Service'
 define service ZFLIGHT_CONNECTION_MANJU {
   expose ZI_CONNECTION_MANJU;
+  expose ZI_FLIGHT_MANJ_R;
 }
