@@ -7,6 +7,7 @@
     sizeCategory: #S,
     dataClass: #MIXED
 }
+@Metadata.allowExtensions: true
 define root view entity ZI_TRAVEL_MANJU_M
   as select from ztravel_manju_m
   composition[0..1] of ZI_BOOKING_MANJU_M as _Booking
